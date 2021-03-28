@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scoreboard/scoreboard.gd" type="Script" id=1]
+
+[node name="scoreboard" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 452.0
+margin_top = 273.0
+margin_right = 572.0
+margin_bottom = 326.0
+
+[node name="Scores" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
+margin_right = 120.0
+margin_bottom = 14.0
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/Scores"]
+margin_right = 120.0
+margin_bottom = 14.0
+text = "user    score"
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 120.0
+margin_bottom = 53.0
+rect_min_size = Vector2( 120, 35 )
+text = "< menu"
+[connection signal="button_down" from="CenterContainer/VBoxContainer/Button" to="." method="_on_Button_button_down"]

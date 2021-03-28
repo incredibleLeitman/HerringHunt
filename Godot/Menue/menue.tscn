@@ -1,0 +1,73 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Menue/menue.gd" type="Script" id=1]
+[ext_resource path="res://Music/menu.wav" type="AudioStream" id=2]
+[ext_resource path="res://Fischi/SpeziFisch.tscn" type="PackedScene" id=3]
+
+[node name="mainMenue" type="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
+script = ExtResource( 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+autoplay = true
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -250.0
+margin_top = -250.0
+margin_right = 250.0
+margin_bottom = 250.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+margin_right = 500.0
+margin_bottom = 500.0
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
+margin_right = 500.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 500, 500 )
+alignment = 1
+
+[node name="ButtonStart" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+margin_top = 193.0
+margin_right = 500.0
+margin_bottom = 228.0
+rect_min_size = Vector2( 0, 35 )
+text = "Start"
+
+[node name="ButtonScore" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+margin_top = 232.0
+margin_right = 500.0
+margin_bottom = 267.0
+rect_min_size = Vector2( 0, 35 )
+text = "Scoreboard"
+
+[node name="ButtonExit" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+margin_top = 271.0
+margin_right = 500.0
+margin_bottom = 306.0
+rect_min_size = Vector2( 0, 35 )
+text = "Exit"
+
+[node name="SpeziFisch" parent="CenterContainer/HBoxContainer" instance=ExtResource( 3 )]
+position = Vector2( 544.433, 246.924 )
+speed = 0
+
+[node name="SpeziFisch2" parent="CenterContainer/HBoxContainer" instance=ExtResource( 3 )]
+position = Vector2( -50.5851, 245.209 )
+speed = 0
+[connection signal="button_down" from="CenterContainer/HBoxContainer/VBoxContainer/ButtonStart" to="." method="_on_ButtonStart_button_down"]
+[connection signal="button_down" from="CenterContainer/HBoxContainer/VBoxContainer/ButtonScore" to="." method="_on_ButtonScore_button_down"]
+[connection signal="button_down" from="CenterContainer/HBoxContainer/VBoxContainer/ButtonExit" to="." method="_on_ButtonExit_button_down"]

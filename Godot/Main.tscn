@@ -1,0 +1,55 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Main.gd" type="Script" id=1]
+[ext_resource path="res://Game/Background.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Game/platforms.tscn" type="PackedScene" id=3]
+[ext_resource path="res://HoldyPoint/HoldyPoint1.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Player/PlayerCamera.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Score/ScoreCount.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Font/Font.tres" type="DynamicFont" id=7]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Music/ingame.wav" type="AudioStream" id=9]
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Background" parent="." instance=ExtResource( 2 )]
+position = Vector2( 14, -77.9999 )
+
+[node name="platforms" parent="." instance=ExtResource( 3 )]
+
+[node name="HoldyPoint2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 8.24286, 97.6414 )
+
+[node name="PlayerCamera" parent="." instance=ExtResource( 5 )]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="PlayerCamera"]
+layer = 7
+
+[node name="ScoreCount" parent="PlayerCamera/CanvasLayer" instance=ExtResource( 6 )]
+anchor_left = 1.0
+anchor_bottom = 0.0
+margin_left = -168.0
+margin_bottom = 51.0
+grow_horizontal = 0
+grow_vertical = 0
+custom_constants/margin_right = 0
+custom_constants/margin_top = 0
+
+[node name="Label" type="Label" parent="PlayerCamera/CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 51.0
+custom_fonts/font = ExtResource( 7 )
+
+[node name="Player" parent="." instance=ExtResource( 8 )]
+position = Vector2( -11, 69.8283 )
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="playTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+autoplay = true
+[connection signal="timeout" from="playTimer" to="." method="_on_playTimer_timeout"]

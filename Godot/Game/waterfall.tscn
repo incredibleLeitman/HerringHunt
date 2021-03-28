@@ -1,0 +1,70 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://Graphics/Wasser/Wasser0001.png" type="Texture" id=1]
+[ext_resource path="res://Graphics/Wasser/Wasser0002.png" type="Texture" id=2]
+[ext_resource path="res://Graphics/Wasser/Wasser0003.png" type="Texture" id=3]
+[ext_resource path="res://Graphics/Wasser/Wasser0004.png" type="Texture" id=4]
+[ext_resource path="res://Graphics/Wasser/Wasser0005.png" type="Texture" id=5]
+[ext_resource path="res://Graphics/Wasser/Wasser0006.png" type="Texture" id=6]
+[ext_resource path="res://Graphics/Wasser/Wasser0007.png" type="Texture" id=7]
+[ext_resource path="res://Graphics/Wasser/Wasser0008.png" type="Texture" id=8]
+[ext_resource path="res://Graphics/Wasser/Wasser0009.png" type="Texture" id=9]
+[ext_resource path="res://Graphics/Wasser/Wasser0010.png" type="Texture" id=10]
+[ext_resource path="res://Graphics/Wasser/Wasser0011.png" type="Texture" id=11]
+[ext_resource path="res://Graphics/Wasser/Wasser0012.png" type="Texture" id=12]
+[ext_resource path="res://Graphics/Wasser/Wasser0013.png" type="Texture" id=13]
+[ext_resource path="res://Graphics/Wasser/Wasser0014.png" type="Texture" id=14]
+[ext_resource path="res://Graphics/Wasser/Wasser0015.png" type="Texture" id=15]
+[ext_resource path="res://Graphics/Wasser/Wasser0016.png" type="Texture" id=16]
+[ext_resource path="res://Graphics/Wasser/Wasser0017.png" type="Texture" id=17]
+[ext_resource path="res://Graphics/Wasser/Wasser0018.png" type="Texture" id=18]
+[ext_resource path="res://Graphics/Wasser/Wasser0019.png" type="Texture" id=19]
+[ext_resource path="res://Graphics/Wasser/Wasser0020.png" type="Texture" id=20]
+[ext_resource path="res://Graphics/Wasser/Wasser0021.png" type="Texture" id=21]
+[ext_resource path="res://Graphics/Wasser/Wasser0022.png" type="Texture" id=22]
+[ext_resource path="res://Graphics/Wasser/Wasser0023.png" type="Texture" id=23]
+[ext_resource path="res://Graphics/Wasser/Wasser0024.png" type="Texture" id=24]
+
+[sub_resource type="ViewportTexture" id=1]
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 945, 245000 )
+
+[node name="waterfall" type="Node2D"]
+scale = Vector2( 0.1, 0.1 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_top = -245000.0
+margin_right = 1890.0
+margin_bottom = 2.205e+006
+texture = SubResource( 1 )
+expand = true
+stretch_mode = 2
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 1890, 1510 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Viewport"]
+position = Vector2( 945, 517 )
+frames = SubResource( 2 )
+frame = 21
+speed_scale = 3.0
+playing = true
+flip_v = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16384
+collision_mask = 16384
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 945, 0 )
+shape = SubResource( 3 )

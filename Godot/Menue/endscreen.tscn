@@ -1,0 +1,86 @@
+[gd_scene load_steps=30 format=2]
+
+[ext_resource path="res://endscreen.gd" type="Script" id=1]
+[ext_resource path="res://Graphics/End/End0001.png" type="Texture" id=2]
+[ext_resource path="res://Graphics/End/End0002.png" type="Texture" id=3]
+[ext_resource path="res://Graphics/End/End0003.png" type="Texture" id=4]
+[ext_resource path="res://Graphics/End/End0004.png" type="Texture" id=5]
+[ext_resource path="res://Graphics/End/End0005.png" type="Texture" id=6]
+[ext_resource path="res://Graphics/End/End0006.png" type="Texture" id=7]
+[ext_resource path="res://Graphics/End/End0007.png" type="Texture" id=8]
+[ext_resource path="res://Graphics/End/End0008.png" type="Texture" id=9]
+[ext_resource path="res://Graphics/End/End0009.png" type="Texture" id=10]
+[ext_resource path="res://Graphics/End/End0010.png" type="Texture" id=11]
+[ext_resource path="res://Graphics/End/End0011.png" type="Texture" id=12]
+[ext_resource path="res://Graphics/End/End0012.png" type="Texture" id=13]
+[ext_resource path="res://Graphics/End/End0013.png" type="Texture" id=14]
+[ext_resource path="res://Graphics/End/End0014.png" type="Texture" id=15]
+[ext_resource path="res://Graphics/End/End0015.png" type="Texture" id=16]
+[ext_resource path="res://Graphics/End/End0016.png" type="Texture" id=17]
+[ext_resource path="res://Graphics/End/End0017.png" type="Texture" id=18]
+[ext_resource path="res://Graphics/End/End0018.png" type="Texture" id=19]
+[ext_resource path="res://Graphics/End/End0019.png" type="Texture" id=20]
+[ext_resource path="res://Graphics/End/End0020.png" type="Texture" id=21]
+[ext_resource path="res://Graphics/End/End0021.png" type="Texture" id=22]
+[ext_resource path="res://Graphics/End/End0022.png" type="Texture" id=23]
+[ext_resource path="res://Graphics/End/End0023.png" type="Texture" id=24]
+[ext_resource path="res://Graphics/End/End0024.png" type="Texture" id=25]
+[ext_resource path="res://Graphics/End/End0025.png" type="Texture" id=26]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ) ],
+"loop": false,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="InputEventAction" id=2]
+action = "enter"
+
+[sub_resource type="ShortCut" id=3]
+shortcut = SubResource( 2 )
+
+[node name="endscreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 510.877, 298.537 )
+scale = Vector2( 0.533536, 0.548379 )
+frames = SubResource( 1 )
+frame = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 100.0
+margin_top = 50.0
+margin_right = 150.0
+margin_bottom = 46.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_right = 150.0
+margin_bottom = 92.0
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_right = 150.0
+margin_bottom = 14.0
+text = "Score: %score%"
+
+[node name="TextEdit" type="TextEdit" parent="CenterContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 150.0
+margin_bottom = 53.0
+rect_min_size = Vector2( 150, 35 )
+text = "enter name"
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 57.0
+margin_right = 150.0
+margin_bottom = 92.0
+rect_min_size = Vector2( 0, 35 )
+shortcut = SubResource( 3 )
+text = "save score"
+[connection signal="button_down" from="CenterContainer/VBoxContainer/Button" to="." method="_on_Button_button_down"]
